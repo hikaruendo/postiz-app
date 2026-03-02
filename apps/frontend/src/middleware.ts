@@ -35,6 +35,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/auth/login-required`, nextUrl.href));
   }
 
+  if (nextUrl.pathname === '/terms' || nextUrl.pathname === '/privacy') {
+    return NextResponse.redirect(
+      new URL(`https://postiz.com${nextUrl.pathname}`)
+    );
+  }
+
   if (
     nextUrl.pathname.startsWith('/uploads/') ||
     nextUrl.pathname.startsWith('/p/') ||
